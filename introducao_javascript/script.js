@@ -1,12 +1,91 @@
-//funções
-//arrow function
-const dobrar = n => 2 * n
-console.log(dobrar(6))
-const triplicar = (n) => {
-    console.log("Vamos calcular o triplo de " + n)
-    return 3 * n
+// //closure
+function eAgora(){
+    let cont = 1
+    function f1(){
+        console.log(cont)
+    }
+    cont++
+    function f2(){
+        console.log(cont)
+    }
+    cont++
+    return {f1, f2}
 }
-console.log(triplicar(5))
+let res = eAgora()
+res.f1()
+res.f2()
+// function saudacoesFactory(saudacao, nome){
+//     let outra
+//     return function(){
+//         console.log(`${saudacao}, ${nome}`)
+//     }
+// }
+// let olaJoao = saudacoesFactory('Oi', 'João')
+// let tchauJoao = saudacoesFactory('Tchau', 'João')
+// olaJoao()
+// tchauJoao()
+// function f(){
+//     let nome = 'João'
+//     function g(){
+//         console.log(nome)
+//     }
+//     g()
+// }
+// f()
+// let umaFuncao = function(){
+//     console.log("Fui armazenada numa variável")
+// }
+// umaFuncao()
+
+// function f (funcao){
+//     funcao()
+// }
+
+// f(umaFuncao)
+
+// function g(){
+//     function outraFuncao(){
+//         console.log('Fui criada pela g')
+//         return () => console.log ("E agora?")
+//     }
+//     return outraFuncao
+// }
+
+
+// f(g()()())
+
+// f(g())
+
+// const gResult = g()
+// gResult()
+// g()()
+
+
+// const valores = [1, 2, 3, 4]
+// const soma = valores.reduce((ac, v) =>{return ac + v})
+// console.log(soma)
+// // const nomes = ['Ana Maria', 'Antonio', 'Rodrigo', 'Alex', 'Cristina']
+// const algumComecaComA = nomes.some(n => n.startsWith('A'))
+// console.log(algumComecaComA)
+// const todosComecamComA = nomes.every(n => n.startsWith('A'))
+// console.log(todosComecamComA)
+//[A, A, R, A, C]
+// const res = nomes.map(nome => nome.charAt(0))
+// console.log(res)
+//reescrever a linha 3 usando todo syntax sugar que as arrow functions oferecem
+// const apenasComA = nomes.filter(n => n.startsWith('A'))
+// console.log(apenasComA)
+
+
+//funções
+// //arrow function
+// const dobrar = n => 2 * n
+// console.log(dobrar(6))
+// const triplicar = (n) => {
+//     console.log("Vamos calcular o triplo de " + n)
+//     return 3 * n
+// }
+// console.log(triplicar(5))
 //escreva uma função que decida se um valor é par ou não
 
 // const hello = nome => console.log('Oi, ' + nome)
