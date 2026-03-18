@@ -1,16 +1,55 @@
+// //1 + 2 + ... + n
+// // const calculoDemorado = (n) => {
+// // 	let cont = 0;
+// // 	for (let i = 1; i <= n; i++)
+// // 		cont += i
+// // 	return cont
+// // }
+// //se n <= 0, então rejeitar dizendo "Apenas valores positivos"
+// //caso contrário, fazer a conta e devolver o resultado
+// const calculoRapidinho = (n) => {
+// 	return n > 0 ? Promise.resolve((n / 2) * (n + 1)) : Promise.reject('Apenas valores positivos')
+// }
+// calculoRapidinho(-10)
+// .then(res => {console.log(`Resultado: ${res}`)})
+// .catch(err => console.log(`Erro: ${err}`))
+
+
+// const calculoDemorado = (n) => {
+// 	return new Promise((resolve, reject) => {
+// 		if (n <= 0){
+// 			reject('Apenas valores positivos')
+// 		}
+// 		else{
+// 			let ac = 0
+// 			for(let i =1; i <= n; i++)
+// 				ac += i
+// 			resolve(ac)
+// 		}
+// 	})
+// }
+//then/catch
+// const promiseResultante = calculoDemorado(-1000)
+// promiseResultante
+// .then((res) => {console.log('Resultado: ' + res)})
+// .catch((err) => {console.log('Erro: ' + err)})
+// // const resultado = calculoDemorado(1000)
+// // console.log(resultado)
+// console.log('script principal terminando...')
+
 //promises
-function calculoRapidinho(numero){
+// function calculoRapidinho(numero){
 
-    return numero >= 0 ? Promise.resolve((numero + 1) * (numero / 2)) : Promise.reject("Somente números positivos por favor")
-}
-const resultado = calculoRapidinho(100)
+//     return numero >= 0 ? Promise.resolve((numero + 1) * (numero / 2)) : Promise.reject("Somente números positivos por favor")
+// }
+// const resultado = calculoRapidinho(100)
 
-resultado
-.then((res) => console.log(res))
-.catch(erro => console.log(erro))
+// resultado
+// .then((res) => console.log(res))
+// .catch(erro => console.log(erro))
 
-const resultado2 = calculoRapidinho(-500)
-resultado2.then(res => console.log(res)).catch(erro => console.log(erro))
+// const resultado2 = calculoRapidinho(-500)
+// resultado2.then(res => console.log(res)).catch(erro => console.log(erro))
 
 
 //somar os valores 1, 2, 3 ..., n, sendo um valor passado como parâmetro
