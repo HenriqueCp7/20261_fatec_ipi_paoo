@@ -9,10 +9,13 @@ app.use(express.json())
 app.post('/eventos', (req, res) => {
   //extrair o corpo da requisição
   const evento = req.body
+  console.log(evento)
   //enviar para o mss na porta 4000
   axios.post('http://localhost:4000/eventos', evento)
   //enviar para o mss na porta 5000
   axios.post('http://localhost:5000/eventos', evento)
+  //enviar para o mss na porta 6000
+  axios.post('http://localhost:6000/eventos', evento) 
   //encerrar com código 200
   res.status(200).end()
 })

@@ -31,6 +31,15 @@ app.post('/lembretes', async (req, res) => {
   res.json(lembretes[id])
 })
 
+//fazer um endpoint para receber eventos
+//ele apenas exibe num console.log o evento recebido
+//e termina
+app.post('/eventos', (req, res) => {
+  const evento = req.body
+  console.log(evento)
+  res.end()
+})
+
 const port = 4000
 app.listen(port, () => {
   console.log(`Lembretes. Porta ${port}.`)
