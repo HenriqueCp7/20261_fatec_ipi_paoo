@@ -45,7 +45,6 @@ const funcoes = {
   }
 }
 
-
 app.get('/lembretes', (req, res) => {
   res.json(baseConsolidada)
 })
@@ -69,6 +68,15 @@ app.listen(port, async () => {
     try{
       funcoes[evento.tipo](evento.dados)
     } 
-    catch(e){} 
+    catch(e){}
   })
+
+  function pingConsulta() {
+          axios.post('http://localhost:10000/eventos', { 
+            tipo: 'ConsultaOperante', 
+            dados: {} 
+          })
+          setTimeout(pingConsulta, 30000)
+        }
+        pingConsulta()
 })

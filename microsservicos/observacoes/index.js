@@ -80,4 +80,12 @@ app.post('/eventos', async (req, res) => {
 const port = 5000
 app.listen(port, () => {
   console.log(`Observações. Porta ${port}.`)
+  function pingObservacoes() {
+    axios.post('http://localhost:10000/eventos', { 
+      tipo: 'ObservacoesOperante', 
+      dados: {} 
+    })
+    setTimeout(pingObservacoes, 30000)
+  }
+  pingObservacoes()
 })

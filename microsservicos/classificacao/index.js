@@ -30,4 +30,14 @@ app.post('/eventos', async (req, res) => {
 })
 //subir o serviço na porta 7000
 const port = 7000
-app.listen(port, () => console.log(`Classificação. Porta ${port}`))
+app.listen(port, () => {
+  console.log (`Classificação. Porta ${port}`)
+  function pingClassificacao() {
+    axios.post('http://localhost:10000/eventos', { 
+      tipo: 'ClassificacaoOperante', 
+      dados: {} 
+    })
+    setTimeout(pingClassificacao, 30000)
+  }
+  pingClassificacao()
+})
