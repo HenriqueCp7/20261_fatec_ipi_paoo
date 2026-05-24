@@ -22,7 +22,25 @@ const funcoes = {
         status: observacao.status
       }
     })
-  }
+  },
+
+  ObservacaoPermitida: async (dados) => {
+    const idObs = uuidv4()
+    const { texto, lembreteId} = dados
+    const observacoesDoLembrete = observacoesPorLembrete[lembreteId] || []
+    const status = 'aguardando'
+
+    observacoesDoLembrete.push({id: idObs, texto, status})
+    observacoesPorLembrete[lembreteId] = observacoesDoLembrete
+  //emitir um evento do tipo ObservacaoCriada
+  //fazer com que a observação emitida no evento, já vá com o campo status: aguardando
+    await axios.post('http://localhost:10000/eventos', {
+      tipo: 'ObservacaoCriada',
+      dados: {
+      id: idObs, texto, lembreteId, status
+    }
+  })
+}
 }
 
 /*
@@ -40,24 +58,7 @@ const funcoes = {
 */
 //post
 // /lembretes/1233/observacoes
-app.post('/lembretes/:id/observacoes', async (req, res) => {
-  const idObs = uuidv4()
-  const { texto } = req.body
-  const observacoesDoLembrete = observacoesPorLembrete[req.params.id] || []
-  const status = 'aguardando'
-  observacoesDoLembrete.push({id: idObs, texto, status})
-  observacoesPorLembrete[req.params.id] = observacoesDoLembrete
-  //emitir um evento do tipo ObservacaoCriada
-  //fazer com que a observação emitida no evento, já vá com o campo status: aguardando
-  await axios.post('http://localhost:10000/eventos', {
-    tipo: 'ObservacaoCriada',
-    dados: {
-      id: idObs, texto, lembreteId: req.params.id, status
-    }
-  })
-  res.status(201).json(observacoesDoLembrete)
 
-})
 
 //fazer o endpoint get
 app.get('/lembretes/:id/observacoes', (req, res) => {
