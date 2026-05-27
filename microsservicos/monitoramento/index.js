@@ -8,7 +8,8 @@ const status = {
     lembretes: 'Inoperante',
     observacoes: 'Inoperante',
     classificacao: 'Inoperante',
-    consulta: 'Inoperante'
+    consulta: 'Inoperante',
+    moderacao: 'Inoperante'
 }
 
 const funcoes = {
@@ -35,6 +36,9 @@ const funcoes = {
   },
   ConsultaOperante: () => { 
     status['consulta'] = 'Operante' 
+  },
+  ModeracaoOperante: () => {
+    status['moderacao'] = 'Operante'
   }
 }
 
@@ -43,9 +47,10 @@ function resetaStatus() {
   status['observacoes'] = 'Inoperante'
   status['classificacao'] = 'Inoperante'
   status['consulta'] = 'Inoperante'
-  setTimeout(resetaStatus, 60000)
+  status['moderacao'] = 'Inoperante'
+  setTimeout(resetaStatus, 120000)
 }
-setTimeout(resetaStatus, 60000)
+setTimeout(resetaStatus, 120000)
 
 app.get('/status', (req, res) => {
   res.json(status)

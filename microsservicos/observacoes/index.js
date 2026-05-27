@@ -86,7 +86,7 @@ app.listen(port, () => {
       tipo: 'ObservacoesOperante', 
       dados: {} 
     })
-    setTimeout(pingObservacoes, 30000)
+    setTimeout(pingObservacoes, 60000)
   }
   pingObservacoes()
 })

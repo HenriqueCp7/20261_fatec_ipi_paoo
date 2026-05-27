@@ -34,12 +34,13 @@ app.post('/eventos', async (req, res) => {
 const port = 4000
 app.listen(port, () => {
   console.log(`Lembretes. Porta ${port}.`)
+  
   function pingLembretes() {
     axios.post('http://localhost:10000/eventos', { 
       tipo: 'LembretesOperante', 
       dados: {} 
     })
-    setTimeout(pingLembretes, 30000)
+    setTimeout(pingLembretes, 60000)
   }
   pingLembretes()
 })

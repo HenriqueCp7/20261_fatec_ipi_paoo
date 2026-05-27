@@ -37,7 +37,7 @@ app.listen(port, () => {
       tipo: 'ClassificacaoOperante', 
       dados: {} 
     })
-    setTimeout(pingClassificacao, 30000)
+    setTimeout(pingClassificacao, 60000)
   }
   pingClassificacao()
 })

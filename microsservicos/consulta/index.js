@@ -72,11 +72,11 @@ app.listen(port, async () => {
   })
 
   function pingConsulta() {
-          axios.post('http://localhost:10000/eventos', { 
-            tipo: 'ConsultaOperante', 
-            dados: {} 
-          })
-          setTimeout(pingConsulta, 30000)
-        }
-        pingConsulta()
+    axios.post('http://localhost:10000/eventos', { 
+      tipo: 'ConsultaOperante', 
+      dados: {} 
+    })
+    setTimeout(pingConsulta, 60000)
+  }
+  pingConsulta()
 })
